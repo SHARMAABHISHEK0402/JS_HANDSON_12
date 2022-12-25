@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise Async Await</title>
+  </head>
+  <body>
+    <h1>Promise Async Await Handson</h1>
+    <hr />
+    <h2>
+      1.Write one example explaining how you can write a callback function.
+    </h2>
+    <pre>
+        const person =(friend, callback) => {
+               console.log(`Hello${friend}`);
+              callback();
+             }
+             const secondperson = () =>{
+               console.log(`bye`)
+             }
+             person("me",secondperson);
+            
+    </pre>
+    <hr />
+    <h2>
+      2.Write the promise function to print numbers from 1 to 7, in which 1
+      should be printed after 1 sec, 2 should be printed after 2 sec, 3 should
+      be printed after 3 sec, and so on.
+    </h2>
+    <pre>
+        function callbackhell() {
+               setTimeout(() => {
+                 console.log(1);
+                 setTimeout(() => {
+                   console.log("2");
+                   setTimeout(() => {
+                     console.log("3");
+                     setTimeout(() => {
+                       console.log("4");
+                      setTimeout(() => {
+                         console.log("5");
+                         setTimeout(() => {
+                           console.log("6");
+                           setTimeout(() => {
+                             console.log("7");
+                           }, 7000);
+                         }, 6000);
+                       }, 5000);
+                     }, 4000);
+                   }, 3000);
+                 }, 2000);
+               }, 1000);
+             }
+             callbackhell();
+    </pre>
+    <hr />
+    <h2>
+      3.Create a promise function accepting a argument, if yes is passed to the
+      function then it should go to resolved state and print Promise Resolved,
+      and if nothing is passed then it should go to reject state and catch the
+      error and print Promise Rejected
+    </h2>
+    <pre>
+        let printNumber =(time, num) =>{
+             return new Promise ((resolve, reject)=>{
+                   if (num){
+                       setTimeout(()=>{
+                           resolve(num());
+                       },time)
+                   }
+                   else{
+                       reject(console.log("failed"))
+                   }
+               })
+             }
+             printNumber(0, () =>console.log("Passed")).then(()=>{
+               return printNumber(1000,() =>{console.log("1")})
+             })
+    </pre>
+    <hr />
+    <h2>4.Create examples to explain callback function</h2>
+    <pre>
+        function addNumbers(a, b, callback) {
+               const sum = a + b;
+               callback(sum);
+             }
+            
+             function printResult(result) {
+               console.log(`The result is ${result}.`);
+             }
+            
+             addNumbers(5, 7, printResult);
+            
+    </pre>
+    <hr />
+    <h2>5.Create examples to explain callback hell function</h2>
+    <pre>
+        function callbackex(){
+               setTimeout(() =>{
+                  console.log('Front End Languages:');
+                   setTimeout(() => {
+                       console.log('HTML');
+                       setTimeout(() => {
+                          console.log('CSS');
+                           setTimeout(() => {
+                              console.log('JAVA SCRIPT');
+                         },4000)
+                      },3000)
+                 },2000)
+               },1000);
+             }
+            callbackex();
+    </pre>
+    <hr />
+    <h2>6.Create examples to explain promises function</h2>
+    <pre>
+        const p = new Promise((resolve, reject) => {
+  
+               setTimeout(() => {
+                 const data = {
+                   name: 'John',
+                   age: 30
+                 };
+                 resolve(data);
+              }, 1000);
+             });
+            
+            p.then((data) => {
+               console.log(`My name is ${data.name} and I am ${data.age} years old.`);
+             });
+            
+    </pre>
+    <hr />
+    <h2>7.Create examples to explain async await function</h2>
+    <pre>
+        async function getData(url) {
+ 
+               return new Promise((resolve, reject) => {
+                 setTimeout(() => {
+                   const data = {
+                     name: 'ABhishek',
+                     age: 30
+                   };
+                   resolve(data);
+                 }, 1000);
+               });
+             }
+            
+             async function main() {
+               const data1 = getData('/user/1');
+               const data2 = getData('/user/2');
+               const data3 = getData('/user/3');
+            
+               const results = await Promise.all([data1, data2, data3]);
+               console.log(results);
+             }
+            
+            main();
+    </pre>
+    <script src="main.js"></script>
+  </body>
+</html>
